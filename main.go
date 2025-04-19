@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"time"
 )
 
 func fetch() (PlayerList, error) {
@@ -42,12 +43,53 @@ func printAsJSON(data any) {
 	fmt.Println(string(bytes))
 }
 
-func main() {
+func totalValue(itemDB ItemDB, itemIDs []int) float64 {
+	var sum float64
+	for _, id := range itemIDs {
+		if id == 0 {
+			continue
+		}
+		sum += itemDB.Cost(id)
+	}
+	return sum
+}
+
+func test() {
 	data, err := mock()
 	if err != nil {
 		panic(err)
 	}
 	printAsJSON(data)
-	items := ReadItems(data)
-	fmt.Println(items)
+	items := NewItemState(data)
+	for _, role := range []string{"TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"} {
+		fmt.Println(items.ItemList("ORDER", role), items.ItemList("CHAOS", role))
+	}
+}
+
+func ping(itemDB ItemDB) {
+	for {
+		time.Sleep(10 * time.Second)
+		playerList, err := fetch()
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
+		items := NewItemState(playerList)
+		for _, role := range []string{"TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY"} {
+			blueItems := items.ItemList("ORDER", role)
+			redItems := items.ItemList("CHAOS", role)
+			// fmt.Println(blueItems, redItems)
+			fmt.Println(totalValue(itemDB, blueItems), totalValue(itemDB, redItems), blueItems, redItems)
+		}
+		fmt.Print("\n")
+	}
+}
+
+func main() {
+	itemDB, err := NewItemDB()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(itemDB.Cost(3057))
+	ping(itemDB)
 }
