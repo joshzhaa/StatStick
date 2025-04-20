@@ -7,7 +7,7 @@ function App() {
     "Please enter your name below 👇",
   );
   const [name, setName] = useState("");
-  const updateName = (e: string) => setName(e.target.value);
+  const updateName = (e: any) => setName(e.target.value);
   const updateResultText = (result: string) => setResultText(result);
 
   function greet() {
