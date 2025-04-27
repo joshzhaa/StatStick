@@ -25,4 +25,5 @@ This is a Wails project.
 
 I haven't set up LFS yet, so some .png icons need to be fetched.
 - `/frontend/src/assets/images` with top, jg, mid, bot, and sup icons from [the league wiki](https://wiki.leagueoflegends.com/en-us/Category:Role_icons)
+  - Check the wrapper `/frontend/src/lib/icons.ts` for specifics.
 

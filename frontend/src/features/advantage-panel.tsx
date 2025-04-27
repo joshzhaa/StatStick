@@ -56,7 +56,7 @@ function AdvantagePanel(props : AdvantagePanelProps) {
   );
 
   return (
-    <Table className="w-[500px]">
+    <Table className="max-w-[500px]">
       <TableHeader>
         <TableRow>
           <TableHead>Role</TableHead>
