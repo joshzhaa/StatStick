@@ -32,7 +32,7 @@ interface AdvantagePanelProps {
  */
 function AdvantagePanel(props: AdvantagePanelProps) {
   const format = (diff: number) => {
-    const signedDiff = props.teamBlue ? 1 : -1 * diff;
+    const signedDiff = (props.teamBlue ? 1 : -1) * diff;
     return (signedDiff > 0 ? "+" : "") + signedDiff;
   };
 
@@ -49,7 +49,7 @@ function AdvantagePanel(props: AdvantagePanelProps) {
   };
 
   const rows = props.roleDiffs.map((roleDiff, i) => (
-    <TableRow className="h-10">
+    <TableRow key={i} className="h-10">
       <TableCell>
         <img className="h-10" src={roleIcon(i)} />
       </TableCell>

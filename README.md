@@ -11,12 +11,14 @@ that's actually relevant to the game and tune out the noise.
 - Advantage Panel
   - Show spent gold and level diff per role
   - Color code green/red based on which team user is on
-- Wave Timer 
+- Wave Timer
   - Time to next wave
   - Indicate whether wave is a cannon
+- Role Swap Config
+  - Enable each champion to be swapped independently
 - Personal Performance Diagnostics
-  - CS / min
-  - XP / min
+  - CS / min, CS / possible CS in one lane
+  - XP / min, XP / possible XP in one lane
 - Matchup Notes
 - Overlay
 
