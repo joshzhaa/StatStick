@@ -1,4 +1,11 @@
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
   Table,
   TableBody,
   TableCell,
@@ -63,16 +70,24 @@ function AdvantagePanel(props: AdvantagePanelProps) {
   ));
 
   return (
-    <Table className="max-w-[500px]">
-      <TableHeader>
-        <TableRow>
-          <TableHead>Role</TableHead>
-          <TableHead>Levels</TableHead>
-          <TableHead>Gold</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>{rows}</TableBody>
-    </Table>
+    <Card>
+      <CardHeader>
+        <CardTitle>Advantage Panel</CardTitle>
+        <CardDescription>Who is ahead?</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Table className="max-w-[500px]">
+          <TableHeader>
+            <TableRow>
+              <TableHead>Role</TableHead>
+              <TableHead>Levels</TableHead>
+              <TableHead>Gold</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>{rows}</TableBody>
+        </Table>
+      </CardContent>
+    </Card>
   );
 }
 
